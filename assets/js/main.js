@@ -1,7 +1,29 @@
+function ValidarIP(e){
+  key=e.KeyCode || e.which;
+  keyboard= String.fromCharCode(key);
+  numbers="0123456789.";
+  SpecialChar='.';
+  SpecialKeyboard=false;
+  
+  if(key==SpecialChar){
+    SpecialKeyboard=true;
+  }
+
+  if(numbers.indexOf(keyboard)==-1 && !SpecialKeyboard){
+    alert("Direccion IP no valida");
+    return false;
+    
+
+
+  }
+}
+
+
+
 (function() {
   "use strict";
 
-  /**
+   /**
    * Easy selector helper function
    */
   const select = (el, all = false) => {
