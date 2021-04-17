@@ -1,22 +1,23 @@
 function ValidarIP(e){
   key=e.KeyCode || e.which;
   keyboard= String.fromCharCode(key);
-  numbers="0123456789.";
-  SpecialChar='.';
+  //Reguex="(?:[0-9]{1,3}\.){3}[0-9]{1,3}$";
+  ipRegEx='/^[^0]*([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$/';
+  SpecialChars=[8,13];
   SpecialKeyboard=false;
   
-  if(key==SpecialChar){
-    SpecialKeyboard=true;
-  }
+  for (var i in SpecialChars){
+    if(key==SpecialChars[i]){
+      SpecialKeyboard=true;
+      break;
+    }
+  }  
 
-  if(numbers.indexOf(keyboard)==-1 && !SpecialKeyboard){
+  if(ipRegEx.indexOf(keyboard)==-1 && !SpecialKeyboard){
     alert("Direccion IP no valida");
     return false;
-    
-
-
   }
-}
+}  
 
 
 
