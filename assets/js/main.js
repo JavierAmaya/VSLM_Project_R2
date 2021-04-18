@@ -9,6 +9,7 @@ function ValidarIP(e){
   for (var i in SpecialChars){
     if(key==SpecialChars[i]){
       SpecialKeyboard=true;
+      alert("Direccion IP valida");
       break;
     }
   }  
