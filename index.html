@@ -97,21 +97,22 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="">Direccion IP</span>
                 </div>
-                <input type="text" class="form-control"  minlength="1" maxlength="15" placeholder="introduce una ip correcta" onkeypress="return ValidarIP(event)">
+                <input type="text" id="ipTextInput" class="form-control" aria-describedby="errorIpMessage"  minlength="1" maxlength="15" placeholder="introduce una ip correcta">
+                
               </div>
-
+              <small id="errorIpMessage" style="display: none;" class="form-text text-danger">We'll never share your email with anyone else.</small>
               <div style="padding-bottom: 5px" class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="">Prefijo de Red</span>
                 </div>
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="prefIpInput" disabled>
               </div>
 
               <div style="padding-bottom: 5px" class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="">Numero de Subredes</span>
                 </div>
-                <input type="text" class="form-control">
+                <input type="number" class="form-control" id="numberNetworks" disabled>
               </div>
             </ul>
           </div>
@@ -132,11 +133,8 @@
                     <th scope="col">Cantidad de Hosts</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row">Subred</th>
-                    <td>Introducir el numero de hosts en la sub red</td>
-                  </tr>
+                <tbody id="SubNetTable">
+                  
                 </tbody>
               </table>
             </ul>

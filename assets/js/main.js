@@ -1,4 +1,47 @@
+const inputIp = document.getElementById("ipTextInput")
+const errorIpMessage = document.getElementById("errorIpMessage")
+const prefixIpInput = document.getElementById("prefIpInput")
+const numberNetworksInput =  document.getElementById("numberNetworks")
+const SubNetTable = document.getElementById("SubNetTable")
+
+
+inputIp.addEventListener('change', (e) => {
+  ipValor = e.target.value
+  var eprR = /^[^0]*([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$/;
+  var exprReg = new RegExp(eprR,"")
+
+  var isValidIp = exprReg.test(ipValor)
+  if(!isValidIp){
+    errorIpMessage.style.display = 'block'
+  }
+
+  if(isValidIp){
+    errorIpMessage.style.display = 'none'
+    inputIp.style.border = '1.5px solid green'
+    prefixIpInput.disabled = false;
+    numberNetworksInput.disabled = false;
+  }
+
+})
+
+numberNetworksInput.addEventListener('change', (e) => {
+  var rowsCant = parseInt(e.target.value)
+  var tableContent = '';
+  for (let index = 0; index < rowsCant; index++) {
+    tableContent += `<tr>
+                            <th scope="row">Subred</th>
+                            <td>
+                              <input type="text" id="subredNo${index+1}" placeholder="Introduzca la cantidad de hosts para la subred ${index+1}">
+                              </td>
+                          </tr>`
+    
+  }
+  SubNetTable.innerHTML = tableContent;
+})
+
+
 function ValidarIP(e){
+  console.log("e.value", e)
   key=e.KeyCode || e.which;
   keyboard= String.fromCharCode(key);
   //Reguex="(?:[0-9]{1,3}\.){3}[0-9]{1,3}$";
@@ -7,7 +50,9 @@ function ValidarIP(e){
   SpecialKeyboard=false;
   
   for (var i in SpecialChars){
+    console.log(`i`, i)
     if(key==SpecialChars[i]){
+      console.log(`SpecialChars[i]`, SpecialChars[i])
       SpecialKeyboard=true;
       alert("Direccion IP valida");
       break;
