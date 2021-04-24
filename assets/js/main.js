@@ -39,34 +39,6 @@ numberNetworksInput.addEventListener('change', (e) => {
   SubNetTable.innerHTML = tableContent;
 })
 
-
-function ValidarIP(e){
-  console.log("e.value", e)
-  key=e.KeyCode || e.which;
-  keyboard= String.fromCharCode(key);
-  //Reguex="(?:[0-9]{1,3}\.){3}[0-9]{1,3}$";
-  ipRegEx='/^[^0]*([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])(\.([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){3}$/';
-  SpecialChars=[8,13];
-  SpecialKeyboard=false;
-  
-  for (var i in SpecialChars){
-    console.log(`i`, i)
-    if(key==SpecialChars[i]){
-      console.log(`SpecialChars[i]`, SpecialChars[i])
-      SpecialKeyboard=true;
-      alert("Direccion IP valida");
-      break;
-    }
-  }  
-
-  if(ipRegEx.indexOf(keyboard)==-1 && !SpecialKeyboard){
-    alert("Direccion IP no valida");
-    return false;
-  }
-}  
-
-
-
 (function() {
   "use strict";
 
